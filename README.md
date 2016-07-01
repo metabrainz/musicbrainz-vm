@@ -3,7 +3,7 @@ This project is far from complete. Shit will break. Promise!
 But, if you want to try:
 
 1. Clone this repo
-2. Install Vagrant. https://www.vagrantup.com/
+2. Install Vagrant. Get the latest version! (1.8.x+) https://www.vagrantup.com/
 3. run install.sh
 4. Wait.
 5. Wait some more.
