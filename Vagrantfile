@@ -15,13 +15,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.memory = MEM.to_i
     v.cpus = NCPUS.to_i
     v.customize "pre-boot", ["modifyvm", :id, "--name", "musicbrainz-vm"]
-    hddid = `./get_hdd_uuid.sh`
-    puts "HDD UUID #{hddid}."
-    v.customize "pre-boot", ["modifyvm", hddid, "--resize", "1024"]
+#    hddid = `./get_hdd_uuid.sh`
+#    puts "HDD UUID #{hddid}."
+#    v.customize "pre-boot", ["modifyhd", hddid, "--resize", "1024"]
   end
 
   config.vm.synced_folder ".", "/vagrant"
-  config.vm.provision :shell, path: "bootstrap.sh"
+#  config.vm.provision :shell, path: "bootstrap.sh"
 
   # web
   config.vm.network "forwarded_port", guest: 8080, host: 8080
