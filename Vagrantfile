@@ -14,6 +14,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider "virtualbox" do |v|
     v.memory = MEM.to_i
     v.cpus = NCPUS.to_i
+    v.customize "pre-boot", ["modifyvm", :id, "--name", "musicbrainz-vm"]
+    hddid = `./get_hdd_uuid.sh`
+    puts "HDD UUID #{hddid}."
+    v.customize "pre-boot", ["modifyvm", hddid, "--resize", "1024"]
   end
 
   config.vm.synced_folder ".", "/vagrant"
