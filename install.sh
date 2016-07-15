@@ -2,7 +2,7 @@
 
 #FTP_URL=ftp://ftp.musicbrainz.org
 FTP_URL=ftp://ftp.eu.metabrainz.org
-VMSIZE=10000
+VMSIZE=50000
 PG_DATA_FILE=./pg-data.vmdk
 
 vagrant up --no-provision
