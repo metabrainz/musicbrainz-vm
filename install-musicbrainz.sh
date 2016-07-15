@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Add the vagrant user to the docker group for when messing with docker in the VM directly
+sudo adduser vagrant docker
+
 cd
 mkdir -p musicbrainz
 cd musicbrainz
