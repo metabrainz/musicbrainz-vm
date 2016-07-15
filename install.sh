@@ -34,7 +34,7 @@ if [[ $? != "0" ]]; then
     exit
 fi
 
-VBoxManage storageattach $VMID --storagectl 'SCSI Controller' --port 1 --device 0 --type hdd --medium $PG_DATA_FILE
+VBoxManage storageattach $VMID --storagectl 'SATAController' --port 1 --device 0 --type hdd --medium $PG_DATA_FILE
 if [[ $? != "0" ]]; then
     echo "attaching postgres medium failed."
     exit
@@ -43,6 +43,13 @@ fi
 vagrant up --provision
 if [[ $? != "0" ]]; then
     echo "provisioning the VM failed."
+    exit
+fi
+
+echo "Create partitions and filesystem for postgres drive"
+vagrant ssh -- sudo /vagrant/make-pg-fs.sh
+if [[ $? != "0" ]]; then
+    echo "create partition and filesystem for postgres data failed"
     exit
 fi
 
