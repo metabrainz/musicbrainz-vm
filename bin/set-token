@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ $# != 1 ]]; then
+    echo "Usage: $0 <access token>"
+    exit -1
+fi
+
+vagrant ssh -- docker exec musicbrainzdocker_musicbrainz_1 /set-token.sh $1
