@@ -5,4 +5,4 @@ if [[ $# != 1 ]]; then
     exit -1
 fi
 
-vagrant ssh -- docker exec musicbrainzdocker_musicbrainz_1 /set-token.sh $1
+docker exec musicbrainzdocker_musicbrainz_1 /set-token.sh $1

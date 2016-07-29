@@ -18,4 +18,8 @@ if [[ $rc != "0" ]]; then
     sudo chmod +x /usr/local/bin/docker-compose
 fi
 
+# copy the helper scripts from the musicbrainz-vm repo locally
+mkdir -p bin
+cp -r /vagrant/bin/* bin
+
 echo "Basic setup of the VM is complete. (bootstrap)"
