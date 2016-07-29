@@ -20,7 +20,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder ".", "/vagrant"
   config.vm.provision :shell, path: "bootstrap.sh"
 
-  # web
+  # web & search
+  config.vm.network "forwarded_port", guest: 5000, host: 5000
   config.vm.network "forwarded_port", guest: 8080, host: 8080
 
   # PostgreSQL
