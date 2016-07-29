@@ -16,13 +16,17 @@ But, if you want to try:
 The search indexes are next. If you encounter an error, ping ruaok in #metabrainz on Freenode.
 
 
-## Troubleshooting
+## Helper scripts
 
-If you get this error:
+There are a few scripts to make running the VM a little easier. The set-token script will
+configure the VM with a replication access token you generate from the MetaBrainz site:
 
-  mount: unknown filesystem type 'vboxsf'
+     https://metabrainz.org/supporters/account-type
 
-try:
+After you've generated the access token, run this:
 
-  vagrant plugin install vagrant-vbguest
+     $ vagrant ssh -- bin/set-token <replication token>
 
+Then, to replicate the data immediately, you can run:
+
+     $ vagrant ssh -- bin/replicate
