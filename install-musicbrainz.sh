@@ -24,11 +24,13 @@ else
     cd -
 fi
 
-cd search-server
+cd ~/musicbrainz/musicbrainz-docker/indexer-dockerfile
 if [[ ! -e "index.jar" ]]; then
     echo "Downloading search indexer"
     curl -o index.jar http://ftp.musicbrainz.org/pub/musicbrainz/search/index/index.jar
 fi
+
+cd ~/musicbrainz/musicbrainz-docker/search-dockerfile
 if [[ ! -e "searchserver.war" ]]; then
     echo "Downloading server server"
     curl -o searchserver.war http://ftp.musicbrainz.org/pub/musicbrainz/search/servlet/searchserver.war
