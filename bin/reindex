@@ -1,3 +1,19 @@
 #!/bin/bash
 
+read -p "Press ENTER to erase current seach indexes (if any) and build new indexes or type ^C to abort" dummy
+
+cd /home/vagrant/musicbrainz/musicbrainz-docker
+
+echo `date`: Shutting down search server
+docker-compose kill search
+
+echo `date`: Removing old indexes
+rm -rf /mnt/data/*
+
+echo `date`: Building indexes
 docker-compose -f /home/vagrant/musicbrainz/musicbrainz-docker/docker-compose.yml run indexer /home/search/index.sh
+
+echo `date`: Starting search server 
+docker-compose up -d
+
+echo `date`: Building indexes complete
