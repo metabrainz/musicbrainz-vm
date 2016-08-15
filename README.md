@@ -1,6 +1,15 @@
-This project is far from complete. Shit will break. Promise!
+## Getting started
 
-But, if you want to try:
+This project exists to create the MusicBrainz VM. If you would like to *use* the MusicBrainz VM,
+consider just downloading it from here:
+
+    https://musicbrainz.org/doc/MusicBrainz_Server/Setup
+
+Using this project you can make your own MusicBrainz VM. Please note that this project is not supported
+under Windows. Use a Mac or Linux and it should work fine.
+
+
+## How to build a VM
 
 1. Clone this repo
 2. Install VirtualBox. If you already have it installed, update to the lastest version!
