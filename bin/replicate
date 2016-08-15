@@ -1,3 +1,33 @@
 #!/bin/bash
 
-docker exec musicbrainzdocker_musicbrainz_1 /replication.sh
+LOCKFILE=/home/vagrant/lock/no-background-replication.lock
+
+mkdir -p /home/vagrant/lock
+
+case "$1" in
+    now)
+        cd /home/vagrant/musicbrainz/musicbrainz-docker
+        docker exec musicbrainzdocker_musicbrainz_1 /replication.sh
+        ;;
+    cron)
+        if [[ ! -e "$LOCKFILE" ]]; then
+            cd /home/vagrant/musicbrainz/musicbrainz-docker
+            docker exec musicbrainzdocker_musicbrainz_1 /replication.sh
+        fi
+        ;;
+    start)
+        echo "Background replication is enabled and will happen hourly."
+	rm -f $LOCKFILE
+        ;;
+    stop)
+        echo "Background replication is disabled."
+        touch $LOCKFILE
+        ;;
+    *)
+        echo "Usage: $0 {now|start|stop}"
+        exit 1
+        ;;
+esac
+
+exit 0
+
