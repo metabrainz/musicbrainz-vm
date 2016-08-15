@@ -3,7 +3,7 @@
 #FTP_URL=ftp://ftp.musicbrainz.org
 FTP_URL=ftp://ftp.eu.metabrainz.org
 VMSIZE=50000
-PG_DATA_FILE=./pg-data.vmdk
+PG_DATA_FILE=./pg-data.vdi
 
 vagrant up --no-provision
 if [[ $? != "0" ]]; then
@@ -21,7 +21,7 @@ fi
 # if not exists, vboxmanage closemedium ad26ad5c-b19e-46ba-bee6-88c4e82d7ec7 --delete
 
 echo "Creating disk for VM $MVID"
-VBoxManage createmedium disk --filename $PG_DATA_FILE --format VMDK --size $VMSIZE
+VBoxManage createmedium disk --filename $PG_DATA_FILE --format VDI --size $VMSIZE
 ERR=$?
 if [[ $ERR != "0" ]]; then
     echo "creating postgres medium failed. Error $ERR"
