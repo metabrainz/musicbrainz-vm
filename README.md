@@ -1,15 +1,21 @@
 ## Getting started
 
 This project exists to create the MusicBrainz VM. If you would like to *use* the MusicBrainz VM,
-consider just downloading it from here:
+consider just download a release version from here (eventually):
 
     https://musicbrainz.org/doc/MusicBrainz_Server/Setup
 
+Beta versions are released here:
+
+    ftp://ftp.eu.metabrainz.org/pub/musicbrainz-vm/
+
 Using this project you can make your own MusicBrainz VM. Please note that this project is not supported
-under Windows. Use a Mac or Linux and it should work fine.
+under Windows. Use a Mac or Linux using VirtualBox and it should work fine.
 
 
 ## How to build a VM
+
+ONLY DO THIS STEP IF YOU WANT TO GO THE LOOOONG WAY. Download an image from the links above instead:
 
 1. Clone this repo
 2. Install VirtualBox. If you already have it installed, update to the lastest version!
@@ -25,6 +31,8 @@ under Windows. Use a Mac or Linux and it should work fine.
 If you encounter an error, ping ruaok in #metabrainz on Freenode.
 
 ## Creating search indexes
+
+NOTE: All of the steps below work from vagrant, but you can invoke them from the VM directly as well.
 
 In order to use the search functions of the web site/API you will need to build search indexes. Run:
 
