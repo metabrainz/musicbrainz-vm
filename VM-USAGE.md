@@ -5,7 +5,7 @@ Download a beta version of the VM:
     ftp://ftp.eu.metabrainz.org/pub/musicbrainz-vm/
 
 Please note that we currently only support VirtualBox. We cannot help with other
-virtualization software.
+virtualization software. The VM will run on any system that VirtualBox supports.
 
 ## Logging in
 
@@ -59,3 +59,19 @@ To replicate the data automatically once an hour, you can run:
 To stop automatic replication, use:
 
      $ bin/replicate stop
+
+## Troubleshooting
+
+If any of the scripts above do not work, please tell us what you have done, what you
+were trying to do and the output of:
+
+     $ docker ps
+     $ docker-compose -f /home/vagrant/musicbrainz/musicbrainz-docker/docker-compose.yml
+
+to 
+
+     http://tickets.musicbrainz.org/secure/CreateIssue!default.jspa
+
+Submit the issue to the "MusicBrainz Virtual Machines" (MBVM) project.
+
+
