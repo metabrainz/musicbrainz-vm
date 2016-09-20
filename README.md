@@ -71,3 +71,17 @@ To replicate the data automatically once an hour, you can run:
 To stop automatic replication, use:
 
      $ vagrant ssh -- bin/replicate stop
+
+## Post build clean-up
+
+Once the VM is built, a few cleanup bits should be done:
+
+* Delete the datadump files from /media/dbdump
+* Rename the user vagrant to 'mb' and set the password for user mb to 'mb'
+
+     sudo usermod -l mb vagrant
+     sudo passwd mb
+
+* Compress the data volume with this command:
+
+     vboxmanage modifymedium disk --compact <uuid>

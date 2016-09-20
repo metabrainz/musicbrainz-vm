@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FTP_URL=$1
+FTP_SERVER=$1
 
 cd musicbrainz/musicbrainz-docker
-sudo docker-compose run --rm musicbrainz /createdb.sh -fetch $FTP_URL
+sudo docker-compose run --rm musicbrainz /createdb.sh -fetch $FTP_SERVER
