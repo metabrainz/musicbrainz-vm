@@ -72,16 +72,17 @@ To stop automatic replication, use:
 
      $ vagrant ssh -- bin/replicate stop
 
+## Troubleshooting
+
+If you get a mysterious error about containers not being started or some-such, try running this command:
+
+     $ vagrant ssh -- bin/reset-containers
+
 ## Post build clean-up
 
 Once the VM is built, a few cleanup bits should be done:
 
 * Delete the datadump files from /media/dbdump
-* Rename the user vagrant to 'mb' and set the password for user mb to 'mb'
-
-     sudo usermod -l mb vagrant
-     sudo passwd mb
-
 * Compress the data volume with this command:
 
-     vboxmanage modifymedium disk --compact <uuid>
+        vboxmanage modifymedium disk --compact <uuid>

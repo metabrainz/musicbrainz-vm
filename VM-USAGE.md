@@ -60,7 +60,17 @@ To stop automatic replication, use:
 
      $ bin/replicate stop
 
+
 ## Troubleshooting
+
+If you get a mysterious error about containers not being started or some-such, try running this command:
+
+     $ vagrant ssh -- bin/reset-containers
+
+Then try the command again that failed.
+
+
+## Bugs
 
 If any of the scripts above do not work, please tell us what you have done, what you
 were trying to do and the output of:
@@ -73,5 +83,3 @@ to
      http://tickets.musicbrainz.org/secure/CreateIssue!default.jspa
 
 Submit the issue to the "MusicBrainz Virtual Machines" (MBVM) project.
-
-
