@@ -9,7 +9,7 @@ cd musicbrainz
 
 # Clone the musicbrainz-docker repo
 if [[ ! -d "musicbrainz-docker" ]]; then
-    git clone https://github.com/mayhem/musicbrainz-docker.git
+    git clone https://github.com/metabrainz/musicbrainz-docker.git
 else
     cd musicbrainz-docker
     git pull origin master
