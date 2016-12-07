@@ -22,8 +22,4 @@ fi
 mkdir -p bin
 cp -r /vagrant/bin/* bin
 
-# clone the repo so it can live in the VM
-cd
-git clone git@github.com:metabrainz/musicbrainz-server.git
-
 echo "Basic setup of the VM is complete. (bootstrap)"
