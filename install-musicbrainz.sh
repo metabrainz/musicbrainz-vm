@@ -47,6 +47,7 @@ if [[ ! -d "musicbrainz-server" ]]; then
     git clone https://github.com/metabrainz/musicbrainz-server.git
 fi
 cd musicbrainz-server
+cp ../DBDefs.pm lib
 npm i
 
 cd ../..
