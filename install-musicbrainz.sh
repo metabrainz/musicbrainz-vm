@@ -37,7 +37,7 @@ if [[ ! -e "searchserver.war" ]]; then
 fi
 
 # setup to use npm
-sudo apt-get install -y nodejs
+sudo apt-get install -y nodejs npm
 sudo sh -c 'curl -sL https://deb.nodesource.com/setup_6.x | bash'
 
 # clone the repo so it can live in the VM
