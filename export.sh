@@ -24,6 +24,7 @@ vboxmanage modifymedium --compact $PG_ID
 echo "=== clone, compact main fs:"
 vboxmanage clonemedium --format VDI $ROOT_ID "$VM_DIR/box-disk1.vdi"
 vboxmanage storageattach $VMID --storagectl 'SATAController' --port 0 --type hdd --medium "$VM_DIR/box-disk1.vdi"
+ROOT_ID=`vboxmanage showvminfo musicbrainz-vm | grep 'SATAController (0, 0)' | grep -o '[a-fA-F0-9]\{8\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{12\}'`
 vboxmanage modifymedium --compact $ROOT_ID
 
 echo "=== export OVA"
