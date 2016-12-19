@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd ~/musicbrainz/musicbrainz-docker
-docker-compose build
+docker-compose down
 docker-compose up -d

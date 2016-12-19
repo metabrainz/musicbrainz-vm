@@ -9,7 +9,7 @@ cd musicbrainz
 
 # Clone the musicbrainz-docker repo
 if [[ ! -d "musicbrainz-docker" ]]; then
-    git clone https://github.com/mayhem/musicbrainz-docker.git
+    git clone https://github.com/metabrainz/musicbrainz-docker.git
 else
     cd musicbrainz-docker
     git pull origin master
@@ -36,7 +36,27 @@ if [[ ! -e "searchserver.war" ]]; then
     curl -o searchserver.war http://ftp.musicbrainz.org/pub/musicbrainz/search/servlet/searchserver.war
 fi
 
-cd ~/musicbrainz/musicbrainz-docker
+# setup to use npm
+sudo apt-get install -y nodejs npm
+sudo sh -c 'curl -sL https://deb.nodesource.com/setup_6.x | bash'
+
+# clone the repo so it can live in the VM
+
+cd ~/musicbrainz/musicbrainz-docker/musicbrainz-dockerfile
+if [[ ! -d "musicbrainz-server" ]]; then
+    git clone https://github.com/metabrainz/musicbrainz-server.git
+fi
+
+if [[ ! -e "~/musicbrainz-server" ]]; then
+    ln -s ~/musicbrainz/musicbrainz-docker/musicbrainz-dockerfile/musicbrainz-server ~/musicbrainz-server
+fi
+
+cd musicbrainz-server
+cp ../DBDefs.pm lib
+npm i
+
+cd ../..
+
 sudo docker-compose build
 sudo docker-compose up -d
 cd 
