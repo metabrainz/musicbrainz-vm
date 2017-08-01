@@ -9,7 +9,7 @@ cd musicbrainz
 
 # Clone the musicbrainz-docker repo
 if [[ ! -d "musicbrainz-docker" ]]; then
-    git clone https://github.com/metabrainz/musicbrainz-docker.git
+    git clone https://github.com/mayhem/musicbrainz-docker.git
 else
     cd musicbrainz-docker
     git pull origin master
@@ -17,7 +17,7 @@ else
 fi
 
 if [[ ! -d "search-server" ]]; then
-    git clone https://bitbucket.org/metabrainz/search-server.git
+    git clone https://github.com/metabrainz/search-server.git
 else
     cd search-server
     git pull origin master
