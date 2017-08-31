@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #FTP_SERVER=ftp.musicbrainz.org
-FTP_SERVER=ftp.eu.metabrainz.org
+#FTP_SERVER=ftp.eu.metabrainz.org
+FTP_SERVER=mirrors.dotsrc.org/MusicBrainz/
 VMSIZE=50000
 PG_DATA_FILE=./pg-data.vdi
 

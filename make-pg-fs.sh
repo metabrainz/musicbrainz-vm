@@ -7,7 +7,9 @@ mkfs.ext4 /dev/sdb1
 mkdir -p /mnt/pgdata
 mount -t ext4 /dev/sdb1 /mnt/pgdata
 mkdir -p /mnt/pgdata/pgdata
+mkdir -p /mnt/pgdata/docker-volumes
 mkdir -p /mnt/indexdata
+ln -s /mnt/pgdata/docker-volumes /var/lib/docker 
 
 FSTAB=`grep pgdata /etc/fstab | wc -l`
 echo "$FSTAB lines mentioned pgdata in fstab"

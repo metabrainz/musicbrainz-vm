@@ -17,6 +17,8 @@ echo "=== root fs UUID: $ROOT_ID $ROOT_FILE"
 echo "=== postgres fs UUID: $PG_ID $PG_FILE"
 echo
 
+echo "=== remove shared folders"
+vboxmanage sharedfolder remove $VMID --name vagrant
 
 echo "=== compact postgres fs:"
 vboxmanage modifymedium --compact $PG_ID
