@@ -1,8 +1,7 @@
 #!/bin/bash
 
 #FTP_SERVER=ftp.musicbrainz.org
-#FTP_SERVER=ftp.eu.metabrainz.org
-FTP_SERVER=mirrors.dotsrc.org/MusicBrainz/
+FTP_SERVER=ftp.eu.metabrainz.org
 VMSIZE=50000
 PG_DATA_FILE=./pg-data.vdi
 
@@ -48,9 +47,9 @@ if [[ $? != "0" ]]; then
 fi
 
 echo "Create partitions and filesystem for postgres drive"
-vagrant ssh -- sudo /vagrant/make-pg-fs.sh
+vagrant ssh -- sudo /vagrant/make-docker-fs.sh
 if [[ $? != "0" ]]; then
-    echo "create partition and filesystem for postgres data failed"
+    echo "create partition and filesystem for docker volumes failed"
     exit
 fi
 
