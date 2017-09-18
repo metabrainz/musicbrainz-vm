@@ -2,7 +2,7 @@
 
 #FTP_SERVER=ftp.musicbrainz.org
 FTP_SERVER=ftp.eu.metabrainz.org
-VMSIZE=50000
+VMSIZE=80000
 PG_DATA_FILE=./pg-data.vdi
 
 vagrant up --no-provision
