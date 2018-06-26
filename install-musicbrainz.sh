@@ -36,9 +36,10 @@ if [[ ! -e "searchserver.war" ]]; then
     curl -o searchserver.war http://ftp.musicbrainz.org/pub/musicbrainz/search/servlet/searchserver.war
 fi
 
-# setup to use npm
+# setup to use yarn
 sudo apt-get install -y nodejs npm
 sudo sh -c 'curl -sL https://deb.nodesource.com/setup_6.x | bash'
+sudo npm install -g yarn
 
 # clone the repo so it can live in the VM
 
@@ -53,7 +54,7 @@ fi
 
 cd musicbrainz-server
 cp ../DBDefs.pm lib
-npm i
+yarn install
 
 cd ../..
 
