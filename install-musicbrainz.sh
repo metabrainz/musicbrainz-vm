@@ -21,6 +21,7 @@ if [[ ! -e "~/musicbrainz-server" ]]; then
 fi
 
 cd musicbrainz-docker
+sed -i '/crons.conf/d' musicbrainz-dockerfile/Dockerfile
 sudo docker-compose build
 sudo docker-compose up -d
 cd 
@@ -29,7 +30,7 @@ COUNT=`crontab -l | grep replicate | wc -l`
 echo "$COUNT lines mention replication"
 if [[ $COUNT == "0" ]]; then
     echo "Adding replication cron entry"
-    (crontab -l ; echo "0 * * * * /home/vagrant/bin/replicate now >> /home/vagrant/replication.log") | crontab -
+    (crontab -l ; echo "0 3 * * * /home/vagrant/bin/replicate now >> /home/vagrant/replication.log") | crontab -
 fi
 ./bin/replicate stop
 
