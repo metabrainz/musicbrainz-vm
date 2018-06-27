@@ -34,7 +34,7 @@ if [[ $? != "0" ]]; then
     exit
 fi
 
-VBoxManage storageattach $VMID --storagectl 'SATAController' --port 1 --device 0 --type hdd --medium $PG_DATA_FILE
+VBoxManage storageattach $VMID --storagectl 'SCSI' --port 1 --device 0 --type hdd --medium $PG_DATA_FILE
 if [[ $? != "0" ]]; then
     echo "attaching postgres medium failed."
     exit
