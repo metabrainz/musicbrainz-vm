@@ -8,7 +8,7 @@ vboxmanage modifymedium --compact <uuid of PG disk>
 Clone, attach and compact the base box:
 
 vboxmanage clonemedium --format VDI <uuid of basebox medium> /Users/robert/VirtualBox\ VMs/musicbrainz-vm/box-disk1.vdi
-vboxmanage storageattach <uuid of vm> --storagectl 'SATAController' --port 0 --type hdd --medium /Users/robert/VirtualBox\ VMs/musicbrainz-vm/box-disk1.vdi
+vboxmanage storageattach <uuid of vm> --storagectl 'SATA Controller' --port 0 --type hdd --medium /Users/robert/VirtualBox\ VMs/musicbrainz-vm/box-disk1.vdi
 vboxmanage modifymedium --compact <uuid of cloned basebox medium>
 
 Export the VM:
