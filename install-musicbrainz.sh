@@ -16,10 +16,6 @@ else
     cd -
 fi
 
-if [[ ! -e "~/musicbrainz-server" ]]; then
-    ln -s ~/musicbrainz/musicbrainz-docker/musicbrainz-dockerfile/musicbrainz-server ~/musicbrainz-server
-fi
-
 cd musicbrainz-docker
 sed -i '/crons.conf/d' musicbrainz-dockerfile/Dockerfile
 sudo docker-compose build
