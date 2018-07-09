@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [[ "$#" != 2 ]] \
+    || ! (echo "$1" | grep -q -P '^(db|musicbrainz|redis|search)$') \
+    || ! (echo "$2" | grep -q -P '^(on|off)$'); then
+    echo "Usage: $0 <db|musicbrainz|redis|search> <on|off>" >&2
+    exit -1
+fi
+
+cd ~/musicbrainz/musicbrainz-docker
+
+if [ "$2" = "on" ]; then
+    if ! patch -p1 -f -s < ~/lib/turn-port/"$1"-on.diff &>/dev/null; then
+        echo "Service port '$1' in the VM has already been turned on!" >&2
+        exit -1
+    fi
+else
+    if ! patch -p1 -R -f -s < ~/lib/turn-port/"$1"-on.diff &>/dev/null; then
+        echo "Service port '$1' in the VM has already been turned off!" >&2
+        exit -1
+    fi
+fi
+
+docker-compose rm --stop "$1"
+docker-compose up --no-build -d

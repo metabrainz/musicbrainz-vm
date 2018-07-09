@@ -1,0 +1,8 @@
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -55,3 +55,5 @@ services:
+     restart: unless-stopped
+     expose:
+       - "6379"
++    ports:
++      - "6379:6379"
