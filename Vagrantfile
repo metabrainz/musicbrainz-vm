@@ -9,7 +9,6 @@ MEM = ENV['CB_MEM'] || '2048'
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "bento/ubuntu-18.04"
   config.vm.hostname = "musicbrainz"
-  config.vm.network "private_network", ip: "10.2.2.2", virtualbox__intnet: true
 
   config.vm.provider "virtualbox" do |v|
     v.memory = MEM.to_i
