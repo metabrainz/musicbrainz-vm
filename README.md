@@ -78,6 +78,13 @@ If you get a mysterious error about containers not being started or some-such, t
 
      $ vagrant ssh -- bin/reset-containers
 
+## Connecting additional ports
+
+Additional ports 6379 (redis) and 15432 (db/postgresql) can be connected after running this:
+
+     $ vagrant ssh -- bin/turn-port db on
+     $ vagrant ssh -- bin/turn-port redis on
+
 ## Post build clean-up
 
 Once the VM is built, a few cleanup bits should be done:
