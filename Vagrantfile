@@ -20,6 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, path: "bootstrap.sh"
 
   config.vm.network :forwarded_port, guest:  5000, host:  5000, auto_correct: true, id: "musicbrainz"
+  config.vm.network :forwarded_port, guest:  6379, host:  6379, auto_correct: true, id: "redis"
   config.vm.network :forwarded_port, guest:  8080, host:  8080, auto_correct: true, id: "search"
   config.vm.network :forwarded_port, guest:  5432, host: 15432, auto_correct: true, id: "db"
 end
