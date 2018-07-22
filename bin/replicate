@@ -10,26 +10,27 @@ case "$1" in
     now)
         cd /home/vagrant/musicbrainz/musicbrainz-docker
         docker exec musicbrainzdocker_musicbrainz_1 /replication.sh
+        echo `date`: Replication has been run successfully
         ;;
     cron)
         if [[ ! -e "$LOCKFILE" ]]; then
             cd /home/vagrant/musicbrainz/musicbrainz-docker
             docker exec musicbrainzdocker_musicbrainz_1 /replication.sh
+            echo `date`: Replication has been run successfully
+        else
+            echo `date`: Replication cannot be run since it is disabled
         fi
         ;;
     start)
-        echo "Background replication is enabled and will happen hourly."
-	rm -f $LOCKFILE
+        rm -f $LOCKFILE
+        echo `date`: Background replication is now enabled and will happen hourly
         ;;
     stop)
-        echo "Background replication is disabled."
         touch $LOCKFILE
+        echo `date`: Background replication is now disabled
         ;;
     *)
         echo "Usage: $0 {now|start|stop}"
         exit 1
         ;;
 esac
-
-exit 0
-
