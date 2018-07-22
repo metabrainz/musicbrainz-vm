@@ -1,3 +1,5 @@
 #!/bin/bash
 
+set -e
+
 docker exec -it musicbrainzdocker_musicbrainz_1 tail -f /musicbrainz-server/slave.log

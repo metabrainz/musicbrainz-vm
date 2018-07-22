@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo -n "Press ENTER to erase current seach indexes (if any) and build new indexes or type ^C to abort"
 read dummy
 

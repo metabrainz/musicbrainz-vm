@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 LOCKFILE=/home/vagrant/lock/no-background-replication.lock
 
 mkdir -p /home/vagrant/lock

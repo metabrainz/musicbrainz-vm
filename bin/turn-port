@@ -97,7 +97,8 @@ file:close()
 -- Recreate container
 
 os.execute(
-   'cd ' .. musicbrainz_docker_path .. ';' ..
+   'set -e' .. '\n' ..
+   'cd ' .. musicbrainz_docker_path .. '\n' ..
    'docker-compose up -d ' .. service
 )
 
