@@ -4,7 +4,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 NCPUS = ENV['CB_NCPUS'] || '2'
-MEM = ENV['CB_MEM'] || '2048'
+MEM = ENV['CB_MEM'] || '4096'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "bento/ubuntu-18.04"
