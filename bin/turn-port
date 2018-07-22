@@ -96,10 +96,19 @@ file:close()
 
 -- Recreate container
 
-os.execute(
+is_happy_end, end_cause, code = os.execute(
    'set -e' .. '\n' ..
    'cd ' .. musicbrainz_docker_path .. '\n' ..
    'docker-compose up -d ' .. service
 )
+
+if not is_happy_end then
+   if end_cause == 'exit' then
+      os.exit(code)
+   else
+      print('Ended by signal ' .. code)
+      os.exit(1)
+   end
+end
 
 -- vi: et sts=3 sw=3 ts=3
