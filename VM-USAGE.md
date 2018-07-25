@@ -37,6 +37,13 @@ first set web server name (it must be resolved by every client that connects to 
 
      $ vagrant ssh -- bin/set-web-server-name example
 
+## Connecting additional ports
+
+Additional ports 6379 (redis) and 15432 (db/postgresql) can be connected after running this:
+
+     $ vagrant ssh -- bin/turn-port db on
+     $ vagrant ssh -- bin/turn-port redis on
+
 ## Replication / Live Data Feed
 
 There are a few scripts to make running the VM a little easier. 
