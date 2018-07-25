@@ -19,7 +19,7 @@ Log in with password "vagrant".
 
 In order to use the search functions of the web site/API you will need to build search indexes. Run:
 
-     $ bin/reindex
+     $ ssh -p 2222 vagrant@localhost -- bin/reindex
 
 This process will also take several hours -- be patient. Perhaps it is best to run this overnight.
 Please don't complain to us about how long this takes.
