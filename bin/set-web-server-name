@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -e
+
+if [[ $# != 1 ]]; then
+    echo "Usage: $0 <hostname|fqdn>"
+    exit 64
+fi
+
+sub="sub WEB_SERVER                { \"${1}:5000\" }"
+
+cd ~/musicbrainz/musicbrainz-docker
+
+echo `date`: Replacing WEB_SERVER value in DBDefs
+docker-compose exec musicbrainz bash -e -c "
+sed '/^\\s*sub\\s\\+WEB_SERVER\\s*{[^}]*}\\s*\$/{
+s/^/# /
+a \\
+${sub}
+}' -i.bak lib/DBDefs.pm
+# Check sub is set and is unique
+grep -q '^${sub}\$' lib/DBDefs.pm
+[ \$( grep -c -G '^\\s*sub\\s\\+WEB_SERVER\\>' lib/DBDefs.pm ) -eq 1 ]"
+
+echo `date`: Recompiling static ressources
+docker-compose exec musicbrainz bash -e -c '
+eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+./script/compile_resources.sh'
+
+echo `date`: Restarting musicbrainz service
+docker-compose restart musicbrainz
+
+echo `date`: Setting web server name complete
