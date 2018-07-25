@@ -4,7 +4,7 @@ set -e
 
 if [[ $# != 1 ]]; then
     echo "Usage: $0 <access token>"
-    exit -1
+    exit 64
 fi
 
 docker exec musicbrainzdocker_musicbrainz_1 /set-token.sh $1

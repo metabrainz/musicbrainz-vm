@@ -31,6 +31,6 @@ case "$1" in
         ;;
     *)
         echo "Usage: $0 {now|start|stop}"
-        exit 1
+        exit 64
         ;;
 esac

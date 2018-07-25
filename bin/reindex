@@ -2,6 +2,11 @@
 
 set -e
 
+if [[ $# != 0 ]]; then
+    echo "Usage: $0"
+    exit 64
+fi
+
 echo -n "Press ENTER to erase current seach indexes (if any) and build new indexes or type ^C to abort"
 read dummy
 

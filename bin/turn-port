@@ -26,7 +26,7 @@ usage = 'Usage: ' .. arg[0] .. ' <db|musicbrainz|redis|search> <on|off>'
 if select('#', ...) ~= 2 then
    print('Error: wrong number of arguments')
    print(usage)
-   os.exit(1)
+   os.exit(64)
 end
 
 service = select('1', ...)
@@ -40,14 +40,14 @@ end
 if not has_service then
    print('Error: no such service: ' .. service)
    print(usage)
-   os.exit(1)
+   os.exit(64)
 end
 
 position = select('2', ...)
 if position ~= 'on' and position ~= 'off' then
    print('Error: neither on nor off: ' .. position)
    print(usage)
-   os.exit(1)
+   os.exit(64)
 end
 
 -- Load configuration from file
