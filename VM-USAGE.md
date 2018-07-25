@@ -9,12 +9,11 @@ virtualization software. The VM will run on any system that VirtualBox supports.
 
 ## Logging in
 
-By default the VM will create a private network and be assigned the IP address 10.2.2.2 . In 
-order to log into the machine with SSH, do this from the host machine:
+By default in VirtualBox, the VM can be accessed directly from the host machine with:
 
-    $ ssh 10.2.2.2
+    $ ssh -p 2222 vagrant@localhost
 
-Log in with username "vagrant" and password "vagrant". 
+Log in with password "vagrant". 
 
 ## Creating search indexes
 
