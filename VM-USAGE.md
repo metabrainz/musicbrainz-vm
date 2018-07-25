@@ -35,14 +35,14 @@ The search service is running on port 8080 if you want to connect to it directly
 To connect to the MusicBrainz VM from another host by going to `http://example:5000`,
 first set web server name (it must be resolved by every client that connects to it):
 
-     $ vagrant ssh -- bin/set-web-server-name example
+     $ ssh -p 2222 vagrant@localhost -- bin/set-web-server-name example
 
 ## Connecting additional ports
 
 Additional ports 6379 (redis) and 15432 (db/postgresql) can be connected after running this:
 
-     $ vagrant ssh -- bin/turn-port db on
-     $ vagrant ssh -- bin/turn-port redis on
+     $ ssh -p 2222 vagrant@localhost -- bin/turn-port db on
+     $ ssh -p 2222 vagrant@localhost -- bin/turn-port redis on
 
 ## Replication / Live Data Feed
 
@@ -75,7 +75,7 @@ To stop automatic replication, use:
 
 If you get a mysterious error about containers not being started or some-such, try running this command:
 
-     $ vagrant ssh -- bin/reset-containers
+     $ ssh -p 2222 vagrant@localhost -- bin/reset-containers
 
 Then try the command again that failed.
 
