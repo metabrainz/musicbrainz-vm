@@ -15,8 +15,15 @@ cd /home/vagrant/musicbrainz/musicbrainz-docker
 echo `date`: Shutting down search server
 docker-compose kill search
 
-echo `date`: Removing old indexes
-rm -rf /mnt/data/*
+mountpoint=`docker volume inspect musicbrainzdocker_indexdata -f '{{ .Mountpoint}}'`
+if ! [[ "$mountpoint" =~ .*indexdata.* ]]; then
+    echo Error: indexdata volume mountpoint not found
+    exit 1
+fi
+if [ $(ls -1AU "$mountpoint"/ | wc -l) -ne 0 ]; then
+    echo `date`: Removing old indexes
+    rm -fr "$mountpoint"/*
+fi
 
 echo `date`: Building indexes
 docker-compose -f /home/vagrant/musicbrainz/musicbrainz-docker/docker-compose.yml run indexer /home/search/index.sh
