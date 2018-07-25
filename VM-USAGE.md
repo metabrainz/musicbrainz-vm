@@ -33,6 +33,10 @@ Once the machine is fully set up, you can connect to the MusicBrainz VM by going
 
 The search service is running on port 8080 if you want to connect to it directly.
 
+To connect to the MusicBrainz VM from another host by going to `http://example:5000`,
+first set web server name (it must be resolved by every client that connects to it):
+
+     $ vagrant ssh -- bin/set-web-server-name example
 
 ## Replication / Live Data Feed
 
