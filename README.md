@@ -28,7 +28,7 @@ ONLY DO THIS STEP IF YOU WANT TO GO THE LOOOONG WAY. Download an image from the 
 9. Better be safe than sorry, wait some more.
 10. With some amount of luck you'll have a working VM without search indexes at this point.
 
-If you encounter an error, ping ruaok in #metabrainz on Freenode.
+If you encounter an error, ping ruaok or yvanzo in #metabrainz on Freenode.
 
 ## Creating search indexes
 
