@@ -17,6 +17,7 @@ under Windows. Use a Mac or Linux using VirtualBox and it should work fine.
 
 ONLY DO THIS STEP IF YOU WANT TO GO THE LOOOONG WAY. Download an image from the links above instead:
 
+0. Make sure you have 100GB free (preferably SSD) disk space (including 55GB for pg-data.vdi)
 1. Clone this repo
 2. Install VirtualBox. If you already have it installed, update to the lastest version!
 3. Install Vagrant. Get the latest version! (1.8.x+) https://www.vagrantup.com/
