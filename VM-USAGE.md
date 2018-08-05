@@ -106,6 +106,7 @@ If you get a mysterious error about containers not being started or some-such, t
 
      $ bin/reset-containers
 
+Set replication access token and web server name again if necessary.
 Then try the command again that failed.
 
 ## Community
