@@ -80,6 +80,12 @@ If you get a mysterious error about containers not being started or some-such, t
 Then try the command again that failed.
 
 
+## Community
+
+Join the forum of musicbrainz virtual machine users at
+
+    https://community.metabrainz.org/tags/musicbrainz-vm
+
 ## Bugs
 
 If any of the scripts above do not work, please tell us what you have done, what you
