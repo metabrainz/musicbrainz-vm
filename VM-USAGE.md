@@ -13,13 +13,21 @@ By default in VirtualBox, the VM can be accessed directly from the host machine 
 
     $ ssh -p 2222 vagrant@localhost
 
-Log in with password "vagrant". 
+Log in with password "vagrant".
+
+> In the following, commands are assumed to be run from the guest with prompt:
+>
+>     vagrant@musicbrainz:~$
+>
+> Alternatively, every _remote command_ can be run from host with command:
+>
+>     $ ssh -p 2222 vagrant@localhost -- _remote command_
 
 ## Creating search indexes
 
 In order to use the search functions of the web site/API you will need to build search indexes. Run:
 
-     $ ssh -p 2222 vagrant@localhost -- bin/reindex
+     $ bin/reindex
 
 This process will also take several hours -- be patient. Perhaps it is best to run this overnight.
 Please don't complain to us about how long this takes.
@@ -35,14 +43,14 @@ The search service is running on port 8080 if you want to connect to it directly
 To connect to the MusicBrainz VM from another host by going to `http://example:5000`,
 first set web server name (it must be resolved by every client that connects to it):
 
-     $ ssh -p 2222 vagrant@localhost -- bin/set-web-server-name example
+     $ bin/set-web-server-name example
 
 ## Connecting additional ports
 
 Additional ports 6379 (redis) and 15432 (db/postgresql) can be connected after running this:
 
-     $ ssh -p 2222 vagrant@localhost -- bin/turn-port db on
-     $ ssh -p 2222 vagrant@localhost -- bin/turn-port redis on
+     $ bin/turn-port db on
+     $ bin/turn-port redis on
 
 ## Replication / Live Data Feed
 
@@ -75,7 +83,7 @@ To stop automatic replication, use:
 
 If you get a mysterious error about containers not being started or some-such, try running this command:
 
-     $ ssh -p 2222 vagrant@localhost -- bin/reset-containers
+     $ bin/reset-containers
 
 Then try the command again that failed.
 
