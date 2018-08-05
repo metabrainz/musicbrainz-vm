@@ -1,0 +1,39 @@
+#!/bin/bash
+
+set -e
+
+LOCKFILE=/home/vagrant/lock/no-background-indexation.lock
+
+mkdir -p /home/vagrant/lock
+
+function run () {
+    cd /home/vagrant/musicbrainz/musicbrainz-docker
+    echo `date`: Running indexation...
+    docker-compose run indexer /home/search/index.sh
+    echo `date`: Indexation has been run successfully
+}
+
+case "$1" in
+    now)
+        run
+        ;;
+    cron)
+        if [[ ! -e "$LOCKFILE" ]]; then
+            run
+        else
+            echo `date`: Indexation has not been run as it is disabled
+        fi
+        ;;
+    start)
+        rm -f $LOCKFILE
+        echo `date`: Background indexation is now enabled and will happen hourly
+        ;;
+    stop)
+        touch $LOCKFILE
+        echo `date`: Background indexation is now disabled
+        ;;
+    *)
+        echo "Usage: $0 {now|start|stop}"
+        exit 64
+        ;;
+esac
