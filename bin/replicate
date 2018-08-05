@@ -6,17 +6,19 @@ LOCKFILE=/home/vagrant/lock/no-background-replication.lock
 
 mkdir -p /home/vagrant/lock
 
+function run {
+    cd /home/vagrant/musicbrainz/musicbrainz-docker
+    docker exec musicbrainzdocker_musicbrainz_1 /replication.sh
+    echo `date`: Replication has been run successfully
+}
+
 case "$1" in
     now)
-        cd /home/vagrant/musicbrainz/musicbrainz-docker
-        docker exec musicbrainzdocker_musicbrainz_1 /replication.sh
-        echo `date`: Replication has been run successfully
+        run
         ;;
     cron)
         if [[ ! -e "$LOCKFILE" ]]; then
-            cd /home/vagrant/musicbrainz/musicbrainz-docker
-            docker exec musicbrainzdocker_musicbrainz_1 /replication.sh
-            echo `date`: Replication has been run successfully
+            run
         else
             echo `date`: Replication cannot be run since it is disabled
         fi
