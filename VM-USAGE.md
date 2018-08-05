@@ -94,6 +94,12 @@ Additional ports 6379 (redis) and 15432 (db/postgresql) can be connected after r
      $ bin/turn-port db on
      $ bin/turn-port redis on
 
+## Collecting logs
+
+MusicBrainz slave server log can be retrieved directly by running this:
+
+     $ bin/tail-replication-log
+
 ## Troubleshooting
 
 If you get a mysterious error about containers not being started or some-such, try running this command:
