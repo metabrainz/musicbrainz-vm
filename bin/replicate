@@ -8,7 +8,8 @@ mkdir -p /home/vagrant/lock
 
 function run {
     cd /home/vagrant/musicbrainz/musicbrainz-docker
-    docker exec musicbrainzdocker_musicbrainz_1 /replication.sh
+    echo `date`: Running replication...
+    docker-compose exec musicbrainz /replication.sh
     echo `date`: Replication has been run successfully
 }
 
@@ -21,7 +22,7 @@ case "$1" in
             run
             /home/vagrant/bin/update-indexes cron
         else
-            echo `date`: Replication cannot be run since it is disabled
+            echo `date`: Replication has not be run as it is disabled
         fi
         ;;
     start)
