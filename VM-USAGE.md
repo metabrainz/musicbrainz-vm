@@ -30,7 +30,7 @@ In order to use the search functions of the web site/API you will need to build 
      $ bin/reindex
 
 This process will also take several hours -- be patient. Perhaps it is best to run this overnight.
-Please don't complain to us about how long this takes.
+It has been reported to take at least 5 hours even with 8GB RAM, 8 Cores and running on a SSD.
 
 ## Using the VM 
 
