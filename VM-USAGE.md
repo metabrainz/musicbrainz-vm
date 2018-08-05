@@ -23,14 +23,56 @@ Log in with password "vagrant".
 >
 >     $ ssh -p 2222 vagrant@localhost -- _remote command_
 
+## Replication / Live Data Feed
+
+There are a few scripts to make running the VM a little easier.
+
+Use the set-token script to set the replication token to access the Live Data Feed. There
+is no need for you to manually edit the DBDefs.pm file! The set-token script will configure
+the VM with a replication access token you generate from the MetaBrainz site:
+
+     https://metabrainz.org/supporters/account-type
+
+After you've generated the access token, run this:
+
+     $ bin/set-token <replication token>
+
+Then, to replicate the data immediately, you can run:
+
+     $ bin/replicate now
+
+To replicate the data automatically once an hour, you can run:
+
+     $ bin/replicate start
+
+To stop automatic replication, use:
+
+     $ bin/replicate stop
+
 ## Creating search indexes
 
-In order to use the search functions of the web site/API you will need to build search indexes. Run:
+In order to use the search functions of the web site/API, you will need to build
+search indexes.  First, make sure your replication access token is set (see
+above section).  Then run:
 
      $ bin/reindex
 
+
 This process will also take several hours -- be patient. Perhaps it is best to run this overnight.
 It has been reported to take at least 5 hours even with 8GB RAM, 8 Cores and running on a SSD.
+
+Search indexes can then be updated after any replication by running:
+
+     $ bin/update-indexes now
+
+To update search indexes on automatic hourly replication (see above section),
+you can run:
+
+     $ bin/update-indexes start
+
+To stop updating search indexes on automatic replication, use:
+
+     $ bin/update-indexes stop
 
 ## Using the VM 
 
@@ -52,33 +94,6 @@ Additional ports 6379 (redis) and 15432 (db/postgresql) can be connected after r
      $ bin/turn-port db on
      $ bin/turn-port redis on
 
-## Replication / Live Data Feed
-
-There are a few scripts to make running the VM a little easier. 
-
-Use the set-token script to set the replication token to access the Live Data Feed. There
-is no need for you to manually edit the DBDefs.pm file! The set-token script will configure 
-the VM with a replication access token you generate from the MetaBrainz site:
-
-     https://metabrainz.org/supporters/account-type
-
-After you've generated the access token, run this:
-
-     $ bin/set-token <replication token>
-
-Then, to replicate the data immediately, you can run:
-
-     $ bin/replicate now
-
-To replicate the data automatically once an hour, you can run:
-
-     $ bin/replicate start
-
-To stop automatic replication, use:
-
-     $ bin/replicate stop
-
-
 ## Troubleshooting
 
 If you get a mysterious error about containers not being started or some-such, try running this command:
@@ -86,7 +101,6 @@ If you get a mysterious error about containers not being started or some-such, t
      $ bin/reset-containers
 
 Then try the command again that failed.
-
 
 ## Community
 
