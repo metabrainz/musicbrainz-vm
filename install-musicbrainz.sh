@@ -20,6 +20,7 @@ cd musicbrainz-docker
 sed -i '/crons.conf/d' musicbrainz-dockerfile/Dockerfile
 sudo docker-compose build
 sudo docker-compose up -d
+sudo systemctl enable docker
 cd 
 
 COUNT=`crontab -l | grep replicate | wc -l`
