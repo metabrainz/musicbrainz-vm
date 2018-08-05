@@ -46,3 +46,15 @@ Once the VM is built, a few cleanup bits should be done:
 * Compress the data volume with this command:
 
         vboxmanage modifymedium disk --compact <uuid>
+
+## Exporting VM for deployment
+
+Stop the Vagrant environment:
+
+    $ vagrant halt
+
+Export the compacted VM:
+
+    $ export.sh
+
+Do a little dance.
