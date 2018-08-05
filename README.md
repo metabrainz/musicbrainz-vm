@@ -1,21 +1,23 @@
-## Getting started
+# MusicBrainz Virtual Machine
 
-This project exists to create the MusicBrainz VM. If you would like to *use* the MusicBrainz VM,
-consider just download a release version from here (eventually):
+This project embeds the MusicBrainz server in slave mode, along with its search
+server, its search indexer, and its dependencies Redis and PostgreSQL, in a VM.
 
-    https://musicbrainz.org/doc/MusicBrainz_Server/Setup
+## Using Public VM
 
-Beta versions are released here:
+Beta images built for VirtualBox are released here:
 
     ftp://ftp.eu.metabrainz.org/pub/musicbrainz-vm/
 
-Using this project you can make your own MusicBrainz VM. Please note that this project is not supported
-under Windows. Use a Mac or Linux using VirtualBox and it should work fine.
+Read [VM usage](VM-USAGE.md) for usage instructions.
 
+## Building VM
 
-## How to build a VM
+**Only do these steps if you want to go the looong way**,
+otherwise download an image from the above links instead.
 
-ONLY DO THIS STEP IF YOU WANT TO GO THE LOOOONG WAY. Download an image from the links above instead:
+Please note that build scripts do not support Windows,
+using VirtualBox for Mac or Linux should work fine.
 
 0. Make sure you have 100GB free (preferably SSD) disk space (including 55GB for pg-data.vdi)
 1. Clone this repo
