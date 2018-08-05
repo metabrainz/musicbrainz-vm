@@ -29,6 +29,6 @@ echo `date`: Building indexes
 docker-compose -f /home/vagrant/musicbrainz/musicbrainz-docker/docker-compose.yml run indexer /home/search/index.sh
 
 echo `date`: Starting search server 
-docker-compose up -d
+docker-compose up -d --no-recreate search
 
 echo `date`: Building indexes complete

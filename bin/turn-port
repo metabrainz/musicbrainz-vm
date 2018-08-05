@@ -99,7 +99,7 @@ file:close()
 is_happy_end, end_cause, code = os.execute(
    'set -e' .. '\n' ..
    'cd ' .. musicbrainz_docker_path .. '\n' ..
-   'docker-compose up -d ' .. service
+   'docker-compose up -d --no-recreate ' .. service
 )
 
 if not is_happy_end then
