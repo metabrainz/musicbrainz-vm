@@ -9,10 +9,10 @@ cd musicbrainz
 
 # Clone the musicbrainz-docker repo
 if [[ ! -d "musicbrainz-docker" ]]; then
-    git clone https://github.com/yvanzo/musicbrainz-docker.git
+    git clone https://github.com/yvanzo/musicbrainz-docker.git -b sample-data
 else
     cd musicbrainz-docker
-    git pull origin master
+    git pull --rebase origin sample-data
     cd -
 fi
 
