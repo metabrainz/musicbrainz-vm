@@ -61,18 +61,9 @@ above section).  Then run:
 This process will also take several hours -- be patient. Perhaps it is best to run this overnight.
 It has been reported to take at least 5 hours even with 8GB RAM, 8 Cores and running on a SSD.
 
-Search indexes can then be updated after any replication by running:
-
-     $ bin/update-indexes now
-
-To update search indexes on automatic hourly replication (see above section),
-you can run:
-
-     $ bin/update-indexes start
-
-To stop updating search indexes on automatic replication, use:
-
-     $ bin/update-indexes stop
+There is currently no way to update search indexes based on existing index data.
+This will be possible with the new SOLR-based search server.
+See issue [MBVM-38](https://tickets.metabrainz.org/browse/MBVM-38).
 
 ## Using the VM 
 

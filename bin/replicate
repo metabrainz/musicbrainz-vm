@@ -20,7 +20,6 @@ case "$1" in
     cron)
         if [[ ! -e "$LOCKFILE" ]]; then
             run
-            /home/vagrant/bin/update-indexes cron
         else
             echo `date`: Replication has not be run as it is disabled
         fi
