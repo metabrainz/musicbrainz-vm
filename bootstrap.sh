@@ -10,4 +10,7 @@ cp -r /vagrant/bin/* bin
 # copy the doc that explains how to use the generated VM
 cp --preserve=timestamps /vagrant/VM-USAGE.md VM-USAGE.md
 
+# copy the script that prints MusicBrainz text at login
+cp --preserve=mode,timestamps {/vagrant/provision,}/etc/updated-motd.d/11-musicbrainz-text
+
 echo "Basic setup of the VM is complete. (bootstrap)"

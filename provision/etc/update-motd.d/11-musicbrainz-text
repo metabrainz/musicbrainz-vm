@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+#    Copyright (C) 2018 MetaBrainz Foundation
+#
+#    This file is part of MusicBrainz, the open internet music database,
+#    and is licensed under the GPL version 2, or (at your option) any
+#    later version: http://www.gnu.org/licenses/gpl-2.0.txt
+
+[ -r /etc/mbvm-release ] && . /etc/mbvm-release
+
+if [ -z "$MBVM_RELEASE" ]; then
+        # Notice missing release info (build without git)
+        MBVM_RELEASE="\e[1;31m[MISSING RELEASE INFO]\e[0m"
+elif echo "$MBVM_RELEASE" | grep -qE '[0-9a-f]{8}|broken|dirty'; then
+        # Highlight development version (build without git annotated tag)
+        MBVM_RELEASE="\e[1;31mUnreleased Version\e[0m $MBVM_RELEASE"
+fi
+
+printf "\n"
+printf " * MusicBrainz Virtual Machine $MBVM_RELEASE:\n"
+printf "   * Usage file:     /home/vagrant/VM-USAGE.md\n"
+printf "   * Documentation:  https://musicbrainz.org/doc/MusicBrainz_Server/Setup\n"
+printf "   * Community:      https://community.metabrainz.org/tags/musicbrainz-vm\n"
+printf "   * Bugs:           https://tickets.metabrainz.org/browse/MBVM\n"
+printf "   * Announcements:  https://blog.musicbrainz.org/tag/vm/\n"
