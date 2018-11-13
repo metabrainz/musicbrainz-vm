@@ -20,9 +20,9 @@ if ! [[ "$mountpoint" =~ .*indexdata.* ]]; then
     echo Error: indexdata volume mountpoint not found
     exit 1
 fi
-if [ $(ls -1AU "$mountpoint"/ | wc -l) -ne 0 ]; then
+if [ $(sudo ls -1AU "$mountpoint"/ | wc -l) -ne 0 ]; then
     echo `date`: Removing old indexes
-    rm -fr "$mountpoint"/*
+    sudo rm -fr "$mountpoint"/*
 fi
 
 echo `date`: Building indexes
