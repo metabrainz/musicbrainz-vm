@@ -4,8 +4,7 @@
 apt-get install -y docker.io docker-compose lua5.2 lua-yaml
 
 # copy the helper scripts from the musicbrainz-vm repo locally
-mkdir -p bin
-cp -r /vagrant/bin/* bin
+cp -R --preserve=mode,timestamps {/vagrant/provision,}/home/vagrant/bin
 chown -R vagrant.vagrant bin
 
 # copy the doc that explains how to use the generated VM
