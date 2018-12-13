@@ -47,14 +47,14 @@ if [[ $? != "0" ]]; then
 fi
 
 echo "Basic setup of the VM"
-vagrant ssh -- sudo /vagrant/bootstrap.sh
+vagrant ssh -- sudo /vagrant/lib/basic-setup.sh
 if [[ $? != "0" ]]; then
     echo "setting basics of the VM failed"
     exit 1
 fi
 
 echo "Create partitions and filesystem for postgres drive"
-vagrant ssh -- sudo /vagrant/make-docker-fs.sh
+vagrant ssh -- sudo /vagrant/lib/docker-filesystem.sh
 if [[ $? != "0" ]]; then
     echo "create partition and filesystem for docker volumes failed"
     exit 1
@@ -68,13 +68,13 @@ if [[ $? != "0" ]]; then
     exit 1
 fi
 
-vagrant ssh -- /vagrant/install-musicbrainz.sh
+vagrant ssh -- /vagrant/lib/musicbrainz-software.sh
 if [[ $? != "0" ]]; then
     echo "installing the MusicBrainz software failed."
     exit 1
 fi
 
-vagrant ssh -- /vagrant/load-data.sh $FTP_SERVER
+vagrant ssh -- /vagrant/lib/postgresql-data.sh $FTP_SERVER
 if [[ $? != "0" ]]; then
     echo "Loading the MusicBrainz data failed."
     exit 1
