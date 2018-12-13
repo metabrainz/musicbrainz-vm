@@ -15,4 +15,4 @@ chown vagrant.vagrant VM-USAGE.md
 # copy the script that prints MusicBrainz text at login
 cp --preserve=mode,timestamps {/vagrant/provision,}/etc/updated-motd.d/11-musicbrainz-text
 
-echo "Basic setup of the VM is complete. (bootstrap)"
+echo "Basic setup of the VM is complete."

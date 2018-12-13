@@ -46,6 +46,13 @@ if [[ $? != "0" ]]; then
     exit
 fi
 
+echo "Basic setup of the VM"
+vagrant ssh -- sudo /vagrant/bootstrap.sh
+if [[ $? != "0" ]]; then
+    echo "setting basics of the VM failed"
+    exit
+fi
+
 echo "Create partitions and filesystem for postgres drive"
 vagrant ssh -- sudo /vagrant/make-docker-fs.sh
 if [[ $? != "0" ]]; then
