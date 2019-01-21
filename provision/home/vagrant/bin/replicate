@@ -21,12 +21,12 @@ case "$1" in
         if [[ ! -e "$LOCKFILE" ]]; then
             run
         else
-            echo `date`: Replication has not be run as it is disabled
+            echo `date`: Background replication has not been run as it is disabled
         fi
         ;;
     start)
         rm -f $LOCKFILE
-        echo `date`: Background replication is now enabled and will happen hourly
+        echo `date`: Background replication is now enabled and will run at 3 am UTC every day
         ;;
     stop)
         touch $LOCKFILE
