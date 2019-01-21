@@ -27,7 +27,7 @@ COUNT=`crontab -l | grep replicate | wc -l`
 echo "$COUNT lines mention replication"
 if [[ $COUNT == "0" ]]; then
     echo "Adding replication cron entry"
-    (crontab -l ; echo "0 3 * * * /home/vagrant/bin/replicate now >> /home/vagrant/replication.log") | crontab -
+    (crontab -l ; echo "0 3 * * * /home/vagrant/bin/replicate cron >> /home/vagrant/replication.log") | crontab -
 fi
 ./bin/replicate stop
 ./bin/update-reindexes start
