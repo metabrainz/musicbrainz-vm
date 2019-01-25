@@ -30,7 +30,6 @@ if [[ $COUNT == "0" ]]; then
     (crontab -l ; echo "0 3 * * * /home/vagrant/bin/replicate cron >> /home/vagrant/replication.log") | crontab -
 fi
 ./bin/replicate stop
-./bin/update-reindexes start
 
 echo "Installation of MusicBrainz software is complete."
 echo 
