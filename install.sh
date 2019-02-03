@@ -1,7 +1,6 @@
 #!/bin/bash
 
-#FTP_SERVER=ftp.musicbrainz.org
-FTP_SERVER=ftp.eu.metabrainz.org
+FTP_MB=ftp://ftp.eu.metabrainz.org/pub/musicbrainz
 VMSIZE=120000
 PG_DATA_FILE=./pg-data.vdi
 
@@ -74,7 +73,7 @@ if [[ $? != "0" ]]; then
     exit 1
 fi
 
-vagrant ssh -- /vagrant/lib/postgresql-data.sh $FTP_SERVER
+vagrant ssh -- /vagrant/lib/postgresql-data.sh $FTP_MB
 if [[ $? != "0" ]]; then
     echo "Loading the MusicBrainz data failed."
     exit 1
