@@ -8,7 +8,10 @@ add-apt-repository \
        $(lsb_release -cs) \
        stable"
 apt-get update
-apt-get install -y docker-ce docker-compose lua5.2 lua-yaml
+apt-get install -y bash-completion docker-ce lua5.2 lua-yaml
+DOCKER_COMPOSE_VERSION="1.24.0"
+curl -L "https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
 # copy the helper scripts from the musicbrainz-vm repo locally
 cp -R --preserve=mode,timestamps {/vagrant/provision,}/home/vagrant/bin
