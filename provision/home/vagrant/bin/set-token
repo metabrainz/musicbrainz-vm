@@ -7,4 +7,4 @@ if [[ $# != 1 ]]; then
     exit 64
 fi
 
-docker exec musicbrainzdocker_musicbrainz_1 /set-token.sh $1
+docker exec musicbrainz-docker_musicbrainz_1 /set-token.sh $1

@@ -1,7 +1,14 @@
 #!/bin/bash
 
 # install helper scripts dependencies
-apt-get install -y docker.io docker-compose lua5.2 lua-yaml
+DOCKER_GPG_KEY="9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
+apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys "$DOCKER_GPG_KEY"
+add-apt-repository \
+       "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+       $(lsb_release -cs) \
+       stable"
+apt-get update
+apt-get install -y docker-ce docker-compose lua5.2 lua-yaml
 
 # copy the helper scripts from the musicbrainz-vm repo locally
 cp -R --preserve=mode,timestamps {/vagrant/provision,}/home/vagrant/bin

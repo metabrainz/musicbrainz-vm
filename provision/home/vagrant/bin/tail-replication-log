@@ -7,4 +7,4 @@ if [[ $# != 0 ]]; then
     exit 64
 fi
 
-docker exec -it musicbrainzdocker_musicbrainz_1 tail -f /musicbrainz-server/slave.log
+docker exec -it musicbrainz-docker_musicbrainz_1 tail -f /musicbrainz-server/slave.log

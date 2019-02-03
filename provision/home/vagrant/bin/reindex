@@ -12,7 +12,7 @@ read dummy
 
 cd /home/vagrant/musicbrainz/musicbrainz-docker
 
-mountpoint=`docker volume inspect musicbrainzdocker_indexdata -f '{{ .Mountpoint}}'`
+mountpoint=`docker volume inspect musicbrainz-docker_indexdata -f '{{ .Mountpoint}}'`
 if ! [[ "$mountpoint" =~ .*indexdata.* ]]; then
     echo Error: indexdata volume mountpoint not found
     exit 1
