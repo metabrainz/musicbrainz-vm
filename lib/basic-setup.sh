@@ -14,6 +14,10 @@ curl -L "https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VER
 chmod +x /usr/local/bin/docker-compose
 curl -L "https://raw.githubusercontent.com/docker/compose/$DOCKER_COMPOSE_VERSION/contrib/completion/bash/docker-compose" -o /etc/bash_completion.d/docker-compose
 
+# add the vagrant user to the docker group
+# for when messing with docker in the VM directly
+adduser vagrant docker
+
 # copy the helper scripts from the musicbrainz-vm repo locally
 cp -R --preserve=mode,timestamps {/vagrant/provision,}/home/vagrant/bin
 chown -R vagrant.vagrant bin
