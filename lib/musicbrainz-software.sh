@@ -7,15 +7,11 @@ mkdir -p musicbrainz
 cd musicbrainz
 
 # Clone the musicbrainz-docker repo
-if [[ ! -d "musicbrainz-docker" ]]; then
-    git clone --depth=1 https://github.com/yvanzo/musicbrainz-docker.git
-else
-    cd musicbrainz-docker
-    git pull origin master
-    cd -
-fi
+git clone http://192.168.0.192:3000/yvanzo/musicbrainz-docker.git
 
 cd musicbrainz-docker
+git checkout origin/sir-solr
+
 sed -i '/crons.conf/d' musicbrainz-dockerfile/Dockerfile
 docker-compose build
 docker-compose up -d
