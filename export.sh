@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -u
+
 VMID=`vboxmanage list vms | grep musicbrainz-vm | grep -o '[a-fA-F0-9]\{8\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{12\}'`
 ROOT_ID=`vboxmanage showvminfo musicbrainz-vm | grep 'SATA Controller (0, 0)' | grep -o '[a-fA-F0-9]\{8\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{12\}'`
 ROOT_FILE=`vboxmanage showvminfo --machinereadable musicbrainz-vm | grep 'SATA Controller-0-0' | awk -F\" '{print $4}'`
