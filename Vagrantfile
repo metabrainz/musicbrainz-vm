@@ -3,7 +3,7 @@
 
 VAGRANTFILE_API_VERSION = "2"
 
-NCPUS = ENV['CB_NCPUS'] || '2'
+NCPUS = ENV['CB_NCPUS'] || '4'
 MEM = ENV['CB_MEM'] || '4096'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|

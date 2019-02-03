@@ -12,9 +12,6 @@ read dummy
 
 cd /home/vagrant/musicbrainz/musicbrainz-docker
 
-echo `date`: Shutting down search server
-docker-compose kill search
-
 mountpoint=`docker volume inspect musicbrainzdocker_indexdata -f '{{ .Mountpoint}}'`
 if ! [[ "$mountpoint" =~ .*indexdata.* ]]; then
     echo Error: indexdata volume mountpoint not found
@@ -26,9 +23,6 @@ if [ $(sudo ls -1AU "$mountpoint"/ | wc -l) -ne 0 ]; then
 fi
 
 echo `date`: Building indexes
-docker-compose -f /home/vagrant/musicbrainz/musicbrainz-docker/docker-compose.yml run indexer /home/search/index.sh
-
-echo `date`: Starting search server 
-docker-compose up -d --no-recreate search
+docker-compose -f /home/vagrant/musicbrainz/musicbrainz-docker/docker-compose.yml run indexer python -m sir reindex
 
 echo `date`: Building indexes complete
