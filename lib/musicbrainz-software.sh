@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -u
+
 cd
 mkdir -p musicbrainz
 cd musicbrainz

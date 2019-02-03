@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -u
+
 FTP_MB="$1"
 IMPORT="$2"
 

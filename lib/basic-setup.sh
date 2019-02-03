@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e -u
+
 # install helper scripts dependencies
 DOCKER_GPG_KEY="9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
 apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys "$DOCKER_GPG_KEY"
