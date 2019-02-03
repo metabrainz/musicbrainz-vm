@@ -100,7 +100,7 @@ fi
 
 MBVM_RELEASE=`git describe --always --broken --dirty`
 echo "Set MusicBrainz Virtual Machine version to ${MBVM_RELEASE-[MISSING RELEASE INFO]}"
-vagrant ssh -- sudo /bin/bash -c "echo MBVM_RELEASE=$MBVM_RELEASE > /etc/mbvm-release"
+vagrant ssh -- "sudo /bin/bash -c 'echo MBVM_RELEASE=$MBVM_RELEASE > /etc/mbvm-release'"
 if [[ $? != "0" ]]; then
     echo "Setting the MusicBrainz Virtual Machine release info failed."
     exit 1
