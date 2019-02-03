@@ -1,8 +1,47 @@
 #!/bin/bash
 
 FTP_MB=ftp://ftp.eu.metabrainz.org/pub/musicbrainz
+IMPORT=fullexport
 VMSIZE=120000
 PG_DATA_FILE=./pg-data.vdi
+
+HELP=$(cat <<EOH
+
+Usage: $0 [-sample] [<MusicBrainz FTP URL>]
+
+Build MusicBrainz Virtual Machine.
+
+Options:
+  -sample     Load sample data instead of full data
+
+Full/sample data dump is downloaded from MusicBrainz FTP,
+whose URL can be specified (to use a mirror), default is:
+"$FTP_MB"
+EOH
+)
+
+if [ $# -gt 2 ]; then
+    echo "$0: too many arguments"
+    echo "$HELP"
+    exit 1
+fi
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -sample )
+            IMPORT=sample
+            ;;
+        -*      )
+            echo "$0: unrecognized option '$1'"
+            echo "$HELP"
+            exit 1
+            ;;
+        *       )
+            FTP_MB="$1"
+            ;;
+    esac
+    shift
+done
 
 vagrant up --no-provision
 if [[ $? != "0" ]]; then
@@ -73,7 +112,7 @@ if [[ $? != "0" ]]; then
     exit 1
 fi
 
-vagrant ssh -- /vagrant/lib/postgresql-data.sh $FTP_MB
+vagrant ssh -- /vagrant/lib/postgresql-data.sh "$FTP_MB" "$IMPORT"
 if [[ $? != "0" ]]; then
     echo "Loading the MusicBrainz data failed."
     exit 1
