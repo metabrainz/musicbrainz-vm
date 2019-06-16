@@ -1,9 +1,35 @@
 #!/bin/bash
 
-set -e
+set -e -u
 
-if [[ $# != 0 ]]; then
-    echo "Usage: $0"
+HELP=$(cat <<EOH
+
+Usage: $0 [--only <index-name>]...
+
+Rebuild search index(es) from database.
+
+Options:
+  --only <index-name>   Rebuild search index only with name in:
+                        annotation area artist cdstub editor event
+                        instrument label place recording release
+                        release-group series tag url work
+
+By default, rebuild all search indexes.
+EOH
+)
+
+reindex_command="python -m sir -d reindex${reindex_params}"
+if [[ $# == 2 ]]; then
+    if [ "x$1" = "x--only" ]; then
+        reindex_command="${reindex_command} --entity_type $2"
+    else
+        echo "$0: unrecognized option '$1'"
+        echo "$HELP"
+        exit 64
+    fi
+elif [[ $# != 0 ]]; then
+    echo "$0: unsupported number of arguments: $#"
+    echo "$HELP"
     exit 64
 fi
 
@@ -23,6 +49,15 @@ if [ $(sudo ls -1AU "$mountpoint"/ | wc -l) -ne 0 ]; then
 fi
 
 echo `date`: Building indexes
-docker-compose -f /home/vagrant/musicbrainz/musicbrainz-docker/docker-compose.yml run indexer python -m sir reindex
+
+reindex_logfile=/home/vagrant/musicbrainz/sir-reindex-debug.log
+docker-compose \
+  -f /home/vagrant/musicbrainz/musicbrainz-docker/docker-compose.yml \
+  run indexer $reindex_command 2>&1 >"$reindex_logfile"
+
+# containers=( `docker ps -q -f 'name=indexer_run'` )
+# if [ ${#containers[@]} -ne 0 ]; then
+#   docker stop ${containers[@]}
+# fi
 
 echo `date`: Building indexes complete
