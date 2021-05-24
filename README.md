@@ -1,3 +1,6 @@
+**:warning: Note: This repository is no longer being updated since August 2018.
+[musicbrainz-docker](https://github.com/metabrainz/musicbrainz-docker) should be used directly instead.**
+
 # MusicBrainz Virtual Machine
 
 This project embeds the MusicBrainz server in slave mode, along with its search
@@ -30,8 +33,6 @@ using VirtualBox for Mac or Linux should work fine.
 8. You're thinking about complaining how slowly this is going? You should wait some more.
 9. Better be safe than sorry, wait some more.
 10. With some amount of luck you'll have a working VM without search indexes at this point.
-
-If you encounter an error, ping ruaok or yvanzo in #metabrainz on Freenode.
 
 Note that every _remote command_ mentionned in [VM usage](VM-USAGE.md)
 instructions can be run with:
