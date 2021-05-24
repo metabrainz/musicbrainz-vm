@@ -13,15 +13,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider "virtualbox" do |v|
     v.memory = MEM.to_i
     v.cpus = NCPUS.to_i
-    v.customize "pre-boot", ["modifyvm", :id, "--name", "musicbrainz-vm"]
+    v.customize "pre-boot", ["modifyvm", :id, "--name", "musicbrainz-solr-vm"]
   end
 
   config.vm.synced_folder ".", "/vagrant"
 
   config.vm.network :forwarded_port, guest:  5000, host:  5000, auto_correct: true, id: "musicbrainz"
+  config.vm.network :forwarded_port, guest:  5432, host:  5432, auto_correct: true, id: "db"
   config.vm.network :forwarded_port, guest:  5672, host:  5672, auto_correct: true, id: "rabbitmq"
   config.vm.network :forwarded_port, guest:  6379, host:  6379, auto_correct: true, id: "redis"
-  config.vm.network :forwarded_port, guest:  8080, host:  8080, auto_correct: true, id: "search"
-  config.vm.network :forwarded_port, guest:  5432, host: 15432, auto_correct: true, id: "db"
+  config.vm.network :forwarded_port, guest:  8983, host:  8983, auto_correct: true, id: "search"
   config.vm.network :forwarded_port, guest: 15672, host: 15672, auto_correct: true, id: "rabbitmq-management"
 end

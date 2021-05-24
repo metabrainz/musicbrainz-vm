@@ -49,7 +49,7 @@ if [[ $? != "0" ]]; then
     exit 1
 fi
 
-VMID=`vboxmanage showvminfo musicbrainz-vm --machinereadable | grep ^UUID | grep -o '[a-fA-F0-9]\{8\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{12\}'`
+VMID=`vboxmanage showvminfo musicbrainz-solr-vm --machinereadable | grep ^UUID | grep -o '[a-fA-F0-9]\{8\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{4\}-[a-fA-F0-9]\{12\}'`
 echo "VM UUID is $VMID"
 if [[ $VMID == "" ]]; then
     echo "Unable to detect the VM UUID"

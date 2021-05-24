@@ -2,6 +2,7 @@
 
 set -e -u
 
+DEBIAN_FRONTEND=noninteractive
 apt-get install -y parted
 parted /dev/sdb mklabel msdos
 parted /dev/sdb --align cylinder --script -- mkpart primary 0 -1

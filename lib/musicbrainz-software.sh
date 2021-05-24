@@ -10,11 +10,11 @@ cd musicbrainz
 git clone http://192.168.0.192:3000/yvanzo/musicbrainz-docker.git
 
 cd musicbrainz-docker
-git checkout origin/sir-solr
+git checkout origin/mbvm-38-dev
 
-sed -i '/crons.conf/d' musicbrainz-dockerfile/Dockerfile
+sed -i '/crons.conf/d' build/musicbrainz/Dockerfile
 docker-compose build
-docker-compose up -d
+#docker-compose up -d
 sudo systemctl enable docker
 cd 
 

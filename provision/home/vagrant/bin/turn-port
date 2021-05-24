@@ -16,7 +16,7 @@ service_ports = {
    ["db"]            = {"5432:5432"},
    ["musicbrainz"]   = {"5000:5000"},
    ["redis"]         = {"6379:6379"},
-   ["search"]        = {"8080:8080"},
+   ["search"]        = {"8983:8983"},
 }
 
 -- Read and check arguments
